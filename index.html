@@ -737,11 +737,11 @@
     </div>
     <div class="concept-card">
       <div class="concept-card-head"><span class="k">03</span><h4>Instructions</h4></div>
-      <p>What Console does once triggered, written in natural language. <code class="inline">#Tool:Action</code> calls an action in a connected system, <code class="inline">@Resource</code> points to a document or channel.</p>
+      <p>What Console does once triggered, written in natural language.</p>
     </div>
     <div class="concept-card">
       <div class="concept-card-head"><span class="k">04</span><h4>Testing</h4></div>
-      <p>Runs a test flow of your playbook before publishing to confirm that the right playbook is being run at the right time, and that the workflow is working as intended. You will learn various troubleshooting techniques as you build out the five playbooks in this guide.</p>
+      <p>Run a test flow of your playbook before publishing to confirm that the right playbook is being run at the right time, and that the workflow is working as intended. You will learn various troubleshooting techniques as you build out the five playbooks in this guide.</p>
     </div>
   </div>
 </section>
@@ -754,7 +754,7 @@
     <div class="field-label">Required for every playbook</div>
     <ul>
       <li><strong>Clearly defined operational goal:</strong> know what outcome you're automating before you start building.</li>
-      <li><strong>Integrations connected:</strong> playbooks can only take actions through connected apps (Settings &gt; Integrations). If nothing off-the-shelf fits, you can build a custom action instead.</li>
+      <li><strong>Integrations connected:</strong> playbooks can only take actions through connected apps (Settings &gt; Applications).</li>
       <li><strong>Console added to your Slack channels:</strong> Console needs to be a member of any channel where it'll listen for requests.</li>
     </ul>
   </div>
@@ -782,8 +782,8 @@
     <p class="pb-scenario" style="margin-top:6px;">Automatically deflect requests from teammates in the different offices around the country who are having trouble connecting to the wifi.</p>
 
     <div class="callout" style="margin:16px 0 20px;">
-      <strong>A note before we start:</strong> This playbook will search through our Knowledge Base to surface Wifi Passwords depending on location.
-      <p style="margin:12px 0 8px;">If you don't already have Knowledge Base articles built for Wifi troubleshooting, you can either create ones that apply to your company, or create a few test knowledge base articles to build this playbook:</p>
+      <strong>A note before we start:</strong> This playbook will search through our Knowledge Base to surface wifi passwords depending on location.
+      <p style="margin:12px 0 8px;">If you don't already have Knowledge Base articles built for wifi troubleshooting, you can either create ones that apply to your company, or create a few test knowledge base articles to build this playbook:</p>
       <ol style="margin:0 0 0 20px;padding:0;">
         <li>Navigate to Knowledge Base.</li>
         <li>Create and publish three articles:
@@ -818,7 +818,7 @@
 
     <div class="keep-in-mind">
       <div class="field-label">Things to keep in mind</div>
-      <p>If your team has multiple versions of the same wifi policy in your Knowledge Base, tag each one by office so Console references the right one.</p>
+      <p>You can review and edit your playbook directly using Assistant. Try to see if you can automate the question and answer part of the workflow!</p>
     </div>
   </section>
 </div>
@@ -849,7 +849,7 @@
       <button class="copy-btn" onclick="copyNL(this)" aria-label="Copy natural language example" title="Copy">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
       </button>
-      <span class="nl-text">"Build a playbook that automatically onboards new hires into Slack: when someone joins, add them to the right channels based on their Okta groups, falling back to department/team from [HR Software e.g. HiBob] if there's no match, using the group to channel mapping in [Google Sheet]. Trigger off Okta when someone's added to a group, look up the channel, add them, and send a welcome note once, not per group. If something fails, open a ticket for IT."</span>
+      <span class="nl-text">"Build a playbook that automatically onboards new hires into Slack: when someone joins, add them to the right channels based on their Okta groups, falling back to department/team from [HR Software e.g. HiBob] if there's no match, using the group to channel mapping in [Google Sheet]. Send a welcome note once, not per group. If something fails, open a ticket for IT."</span>
     </div>
   </div>
 
@@ -910,7 +910,7 @@
     </div>
   </div>
   <div class="pb-goal-label">Operational goal</div>
-  <p class="pb-scenario">Manage temporary access for employees logging in from restricted geographic locations, auto-approving short, low-risk requests while routing longer requests for human review.</p>
+  <p class="pb-scenario">Manage temporary access for employees who want to travel and work from international locations, auto-approving short-term duration requests (5 days or less), while routing longer requests for human review.</p>
 
   <div class="callout" style="margin-bottom:20px;">
     <strong>A note before we start:</strong> For this playbook, we have specific policies in place for international travel and laptop usage (e.g. employees cannot use their laptops outside of the US). As you build, be sure to consider your own company's policies for laptop/VPN/Wifi usage in different geographic regions (and what types of approvals you can automate).
@@ -935,7 +935,6 @@
     <div class="field-label">Things to keep in mind</div>
     <p>The 5-day threshold should match your own org's travel or security policy. Don't treat it as a fixed rule.</p>
     <p>Auto-approval paths carry more risk than approval-gated ones, since there's no human checkpoint. Consider whether the auto-approved path should still notify #it-security-alerts for visibility, even without requiring their sign-off.</p>
-    <p>People miss Slack messages. The 15-minute escalation only covers the manual-approval path. Make sure your on-call rotation is actually staffed for security escalations, not just general IT ones.</p>
   </div>
 </div>
 
@@ -948,7 +947,7 @@
     </div>
   </div>
   <div class="pb-goal-label">Operational goal</div>
-  <p class="pb-scenario">Instantly isolate a compromised endpoint and revoke user sessions the moment an automated malware download is detected by your security monitoring software.</p>
+  <p class="pb-scenario">Instantly isolate a compromised device and revoke user sessions the moment an automated malware download is detected by your security monitoring software.</p>
 
   <div class="callout" style="margin-bottom:20px;">
     <strong>A note before we start:</strong> This is a more high-stakes playbook where we isolate what may be a compromised device. For this playbook, you can either connect your current EDR platform or ask Assistant to leave a system placeholder where it calls the EDR platform if you're still working on the connection.
@@ -983,6 +982,7 @@
 <div class="page" id="identify-requests">
   <section>
     <h2 class="section-title">Bonus: use Assistant to identify top playbooks to build</h2>
+    <p>In the first part of this guide, you worked through building 5 playbooks. During that time, support requests were filtering into your Console instance in real time.</p>
     <p>Assistant has full visibility into all of your support requests. This means it can identify top contenders for playbooks to build. You can prompt it right from within the Assistant page, and even give it certain criteria (e.g. volume vs. blockers) to filter through when creating a list of playbook opportunities. The video below will walk you through how to use Assistant to identify the next 4 playbooks you should build.</p>
 
     <div class="video-placeholder" style="margin:0 0 24px;padding:0;">
@@ -1020,9 +1020,8 @@
     <ul>
       <li><strong>You can only call what's connected.</strong> Okta and Slack get connected during onboarding, but several of these playbooks need more, like HiBob, Salesforce, CrowdStrike or SentinelOne, and PagerDuty. Ensure you have the right applications connected before as you build.</li>
       <li><strong>Always test before you publish.</strong> Get in the habit of testing every playbook before it goes live, not just the complex ones.</li>
-      <li><strong>Watch for duplicate or conflicting sources.</strong> If a knowledge base has multiple versions of the same policy, Console will surface all of them. Archive or tag outdated docs so it references a single source of truth.</li>
-      <li><strong>A playbook does something, rather than just describing something.</strong> A good playbook searches, decides, and acts.</li>
     </ul>
+    <p style="margin-top:20px;">Playbooks are powerful tools that allow you to automate a range of requests, so don't hesitate using Assistant to identify opportunities for automation that you may not have thought of!</p>
   </section>
 </div>
 
