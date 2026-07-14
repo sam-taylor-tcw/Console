@@ -737,7 +737,7 @@
     </div>
     <div class="concept-card">
       <div class="concept-card-head"><span class="k">03</span><h4>Instructions</h4></div>
-      <p>What Console does once triggered, written in natural language — <code class="inline">#Tool:Action</code> calls an action in a connected system, <code class="inline">@Resource</code> points to a document or channel.</p>
+      <p>What Console does once triggered, written in natural language. <code class="inline">#Tool:Action</code> calls an action in a connected system, <code class="inline">@Resource</code> points to a document or channel.</p>
     </div>
     <div class="concept-card">
       <div class="concept-card-head"><span class="k">04</span><h4>Testing</h4></div>
@@ -788,9 +788,9 @@
         <li>Navigate to Knowledge Base.</li>
         <li>Create and publish three articles:
           <ul style="margin:8px 0 0;">
-            <li><strong>San Francisco Wifi</strong> — Content: Password 1234</li>
-            <li><strong>Manila Wifi</strong> — Content: Password 4321</li>
-            <li><strong>Boston Wifi</strong> — Content: Password 5678</li>
+            <li><strong>San Francisco Wifi</strong> (Content: Password 1234)</li>
+            <li><strong>Manila Wifi</strong> (Content: Password 4321)</li>
+            <li><strong>Boston Wifi</strong> (Content: Password 5678)</li>
           </ul>
         </li>
       </ol>
@@ -815,6 +815,11 @@
         <span class="nl-text">"When someone in [Insert Slack Channel] asks how to connect to or is having issues with their wifi, search our Knowledge Base for the matching article. Because we have multiple office locations, be sure to ask the employee which office they're in before responding. Then share the password with them (or troubleshooting steps), and include the article link."</span>
       </div>
     </div>
+
+    <div class="keep-in-mind">
+      <div class="field-label">Things to keep in mind</div>
+      <p>If your team has multiple versions of the same wifi policy in your Knowledge Base, tag each one by office so Console references the right one.</p>
+    </div>
   </section>
 </div>
 
@@ -827,7 +832,7 @@
     </div>
   </div>
   <div class="pb-goal-label">Operational goal</div>
-  <p class="pb-scenario">Automatically add new hires to the right Slack channels based on their Okta groups (or HR department as a fallback), and send them a welcome message — no manual channel-adding required.</p>
+  <p class="pb-scenario">Automatically add new hires to the right Slack channels based on their Okta groups (or HR department as a fallback), and send them a welcome message, so there's no manual channel-adding required.</p>
 
   <div class="callout" style="margin-bottom:24px;">
     <strong>A note before we start:</strong> For this playbook, Console will read through a Google Sheet which maps Okta groups to the channels they should be added to. Be sure to have the location where you store your group/channel mapping handy to share with Assistant as it builds. Or, just ask Assistant to add in a placeholder where you can go back and add the location once you have it!
@@ -844,13 +849,13 @@
       <button class="copy-btn" onclick="copyNL(this)" aria-label="Copy natural language example" title="Copy">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
       </button>
-      <span class="nl-text">"Please build a playbook that automatically onboards new hires into Slack. When someone joins, it should add them to the right Slack channels based on the teams/groups they're in, and send them a welcome message. For figuring out which channels, I keep a mapping in a [Google Sheet] (group → Slack channel). I'd like it to look at the person's Okta groups first, and fall back to their department/team from [HR Software e.g. HiBob] if there's no match. It should trigger off Okta when someone gets added to a group, look up the matching channel in the Sheet, add them, and send a welcome note — just once, not for every group. If something fails, open a ticket for IT."</span>
+      <span class="nl-text">"Build a playbook that automatically onboards new hires into Slack: when someone joins, add them to the right channels based on their Okta groups, falling back to department/team from [HR Software e.g. HiBob] if there's no match, using the group to channel mapping in [Google Sheet]. Trigger off Okta when someone's added to a group, look up the channel, add them, and send a welcome note once, not per group. If something fails, open a ticket for IT."</span>
     </div>
   </div>
 
   <div class="keep-in-mind">
     <div class="field-label">Things to keep in mind</div>
-    <p>Your HR system's department or team field needs to match the naming used in your Google Sheet mapping — if HR lists a team as "Eng" but the Sheet expects "Engineering," the fallback lookup will silently fail to find a channel. Whatever HR software you use, confirm the naming lines up before relying on it.</p>
+    <p>Make sure that your HR system's departments or team fields match the names in your Google Sheet mapping. So if you have Engineering in the sheet, but Eng in the HR system, ensure they're aligned.</p>
   </div>
 </div>
 
@@ -868,7 +873,7 @@
   <div class="callout" style="margin-bottom:20px;">
     <strong>A note before we start:</strong> For this playbook, Console will automatically Slack employees every month to see who is using their Salesforce account. Employees can respond yes/no, which will determine if Console deactivates their account. Think about:
     <ul style="margin:10px 0 0;">
-      <li>Which software you want to check on — and is it connected to Console, or should you leave a placeholder?</li>
+      <li>Which software you want to check on, and whether it's already connected to Console (or if you should leave a placeholder).</li>
       <li>How often do you want Console to check in with employees?</li>
       <li>What do you want to happen if they don't respond?</li>
       <li>Consider groups of people you may want to omit from this monthly check (e.g. C-Suite).</li>
@@ -886,14 +891,13 @@
       <button class="copy-btn" onclick="copyNL(this)" aria-label="Copy natural language example" title="Copy">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
       </button>
-      <span class="nl-text">"On the first of every month, check Salesforce for users who haven't logged in during that window. Ask each one in Slack if they still need their license. If they say no, or don't respond within 48 hours, remove them from the app's Okta group. Exclude anyone with an Executive profile. Post a summary of what was reclaimed to #it-finance-audit."</span>
+      <span class="nl-text">"On the first of every month, check Salesforce for users who haven't logged in, and ask each one in Slack if they still need their license, excluding anyone with an Executive profile. If they say no, or don't respond within 48 hours, remove them from the app's Okta group. Post a summary of what was reclaimed to #it-finance-audit."</span>
     </div>
   </div>
 
   <div class="keep-in-mind">
     <div class="field-label">Things to keep in mind</div>
-    <p>Exclusion rules like "Executive profile" are easy to add but easy to forget about later — if your org's exemption list grows beyond one profile type, revisit this playbook rather than letting exceptions pile up as one-off manual overrides.</p>
-    <p>The 48-hour non-response default counts as "no." Make sure that's the behavior you actually want — some teams prefer defaulting to "keep" on non-response for tools tied to compliance or client-facing work.</p>
+    <p>The 48-hour non-response default counts as "no." Make sure that's the behavior you actually want, since some teams prefer defaulting to "keep" on non-response for tools tied to compliance or client-facing work.</p>
   </div>
 </div>
 
@@ -906,7 +910,7 @@
     </div>
   </div>
   <div class="pb-goal-label">Operational goal</div>
-  <p class="pb-scenario">Manage temporary access for employees logging in from restricted geographic locations — auto-approving short, low-risk requests while routing longer requests for human review.</p>
+  <p class="pb-scenario">Manage temporary access for employees logging in from restricted geographic locations, auto-approving short, low-risk requests while routing longer requests for human review.</p>
 
   <div class="callout" style="margin-bottom:20px;">
     <strong>A note before we start:</strong> For this playbook, we have specific policies in place for international travel and laptop usage (e.g. employees cannot use their laptops outside of the US). As you build, be sure to consider your own company's policies for laptop/VPN/Wifi usage in different geographic regions (and what types of approvals you can automate).
@@ -923,15 +927,15 @@
       <button class="copy-btn" onclick="copyNL(this)" aria-label="Copy natural language example" title="Copy">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
       </button>
-      <span class="nl-text">"When someone asks for temporary laptop access while they're traveling abroad, first pull their recent login location from the Okta system log, then send them a form asking where they're going, how long they'll be gone, and why. If the trip is 5 days or less, just auto-approve it and add them to the Travel-Laptop-Access Okta group for exactly the dates they're traveling so it turns off on its own. If it's longer than that, post in #it-security-alerts and wait for someone to approve before granting — and if nobody replies within 15 minutes, Slack DM the on-call admin. Either way, tie the access to the travel window so it revokes automatically when they're back."</span>
+      <span class="nl-text">"When someone asks for temporary laptop access while traveling abroad, pull their recent login location from Okta, then send them a form asking where they're going, how long, and why. If the trip is 5 days or less, auto-approve and add them to the Travel-Laptop-Access Okta group for those dates; if longer, post in #it-security-alerts for approval, and Slack DM the on-call admin if no reply within 15 minutes. Either way, tie access to the travel window so it revokes automatically when they're back."</span>
     </div>
   </div>
 
   <div class="keep-in-mind">
     <div class="field-label">Things to keep in mind</div>
-    <p>The 5-day threshold should match your own org's travel or security policy — don't treat it as a fixed rule.</p>
+    <p>The 5-day threshold should match your own org's travel or security policy. Don't treat it as a fixed rule.</p>
     <p>Auto-approval paths carry more risk than approval-gated ones, since there's no human checkpoint. Consider whether the auto-approved path should still notify #it-security-alerts for visibility, even without requiring their sign-off.</p>
-    <p>People miss Slack messages. The 15-minute escalation only covers the manual-approval path — make sure your on-call rotation is actually staffed for security escalations, not just general IT ones.</p>
+    <p>People miss Slack messages. The 15-minute escalation only covers the manual-approval path. Make sure your on-call rotation is actually staffed for security escalations, not just general IT ones.</p>
   </div>
 </div>
 
@@ -970,7 +974,7 @@
     <p>Automated network isolation can accidentally take down a critical developer server or a leadership endpoint if a benign file triggers a false positive.</p>
     <ul style="margin:10px 0 0;">
       <li>Should every device be automatically isolatable, or are some (leadership, production servers) exempt or routed to manual review first?</li>
-      <li>Who's authorized to submit the isolation override — any security team member, or a specific on-call role?</li>
+      <li>Who's authorized to submit the isolation override: any security team member, or a specific on-call role?</li>
     </ul>
   </div>
 </div>
@@ -998,7 +1002,7 @@
       <li>Use this list to guide your next four playbooks to deflect even more requests.</li>
     </ol>
 
-    <p style="margin-top:24px;font-weight:500;color:var(--ink);">That's it — you now know how to let Assistant surface your next set of playbook opportunities any time you need fresh ideas.</p>
+    <p style="margin-top:24px;font-weight:500;color:var(--ink);">That's it: you now know how to let Assistant surface your next set of playbook opportunities any time you need fresh ideas.</p>
   </section>
 </div>
 
@@ -1014,10 +1018,10 @@
   <section id="keep-in-mind-final" class="tight">
     <h2 class="section-title">Keep these in mind as you continue to build playbooks</h2>
     <ul>
-      <li><strong>You can only call what's connected.</strong> Okta and Slack get connected during onboarding, but several of these playbooks need more — HiBob, Salesforce, CrowdStrike or SentinelOne, PagerDuty. Ensure you have the right applications connected before as you build.</li>
+      <li><strong>You can only call what's connected.</strong> Okta and Slack get connected during onboarding, but several of these playbooks need more, like HiBob, Salesforce, CrowdStrike or SentinelOne, and PagerDuty. Ensure you have the right applications connected before as you build.</li>
       <li><strong>Always test before you publish.</strong> Get in the habit of testing every playbook before it goes live, not just the complex ones.</li>
       <li><strong>Watch for duplicate or conflicting sources.</strong> If a knowledge base has multiple versions of the same policy, Console will surface all of them. Archive or tag outdated docs so it references a single source of truth.</li>
-      <li><strong>A playbook does something — it doesn't just describe something.</strong> A good playbook searches, decides, and acts.</li>
+      <li><strong>A playbook does something, rather than just describing something.</strong> A good playbook searches, decides, and acts.</li>
     </ul>
   </section>
 </div>
